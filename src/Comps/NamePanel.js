@@ -14,7 +14,7 @@ class NamePanel extends React.Component {
     return (
       <div className="block nameBlock">
 
-        <div className="blockContent">
+        <div className="blockContent nameBlockContent">
 
           <div className="nameOverflowContainter">
             <div className="nameContainer">

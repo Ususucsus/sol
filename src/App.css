@@ -4,7 +4,7 @@ body {
 }
 
 .content {
-  width: 60%;
+  width: 66%;
   margin-left: auto;
   margin-right: auto;
 
@@ -15,6 +15,7 @@ body {
   background-color: white;
   border: 1px solid #DADADA;
   border-radius: 6px;
+  margin-bottom: 6px;
 }
 
 .blockContent {
@@ -24,9 +25,16 @@ body {
 
   margin-top: 24px;
   margin-bottom: 24px;
+}
 
+.nameBlockContent {
   display: flex;
   justify-content: space-between;
+}
+
+.blockTitle {
+  font-size: 36px;
+  font-weight: 600;
 }
 
 .nameContainer {
@@ -80,6 +88,24 @@ p {
   float: left;
 }
 
+.afterTitleWrapper {
+  display: flex;
+  margin-left: 12px;
+  margin-top: 24px;
+}
+
+.semiTitle {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.saleDescriptionWrapper, .minutesDescriptionWrapper {
+  width: 90%;
+}
+
+.sale, .minutes {
+  width: 50%;
+}
 
 .clear {
   clear: left;
@@ -87,4 +113,8 @@ p {
 
 .error {
   background-color: red;
+}
+
+.light {
+  font-weight: 300;
 }
