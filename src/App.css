@@ -88,6 +88,13 @@ p {
   float: left;
 }
 
+.afterTitleWrapperVertical {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+  margin-top: 24px;
+}
+
 .afterTitleWrapper {
   display: flex;
   margin-left: 12px;
@@ -101,6 +108,25 @@ p {
 
 .saleDescriptionWrapper, .minutesDescriptionWrapper {
   width: 90%;
+}
+
+.minuteDescriptionWrapper {
+  width: 90%;
+  margin-bottom: 6px;
+}
+
+.minute .semiTitle {
+  margin-bottom: 6px;
+}
+
+.minute {
+  width: 100%;
+  border-bottom: 1px solid #DADADA;
+  margin-bottom: 24px;
+}
+
+.minute:last-child {
+  margin-bottom: 0;
 }
 
 .sale, .minutes {
@@ -117,4 +143,5 @@ p {
 
 .light {
   font-weight: 300;
+  font-size: 24px;
 }
