@@ -30,8 +30,23 @@ body {
 }
 
 .nameContainer {
-  font-size: 64px;
+  margin-top: 24px;
   font-weight: 600;
+  width: 80%;
+}
+
+.nameContainer .name {
+  font-size: 54px;
+}
+
+.nameContainer .surname {
+  font-size: 36px;
+}
+
+.nameOverflowContainter {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
 }
 
 p {

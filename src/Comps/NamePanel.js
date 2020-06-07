@@ -16,9 +16,11 @@ class NamePanel extends React.Component {
 
         <div className="blockContent">
 
-          <div className="nameContainer">
-            <p className="surname">Усманов</p>
-            <p className="name">Артур</p>
+          <div className="nameOverflowContainter">
+            <div className="nameContainer">
+              <p className="name">Константин</p>
+              <p className="surname">Константиновский</p>
+            </div>
           </div>
 
           <div className="staticInfoContainer">
