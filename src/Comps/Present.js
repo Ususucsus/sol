@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from './Icon';
 import TextWithLeftIcon from './TextWithLeftIcon';
 
-class Minute extends React.Component {
+class Present extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,12 +14,9 @@ class Minute extends React.Component {
 
   render() {
     return (
-      <div className="minute">
-        <p className="semiTitle">22 минуты</p>
-        <div className="minuteDescriptionWrapper">
-          <div className="textWrapper">
-            <p className="light">Доступны для Премиум и Вип солярия</p>
-          </div>
+      <div className="present">
+        <div className="textWrapper">
+          <p className="semiTitle">Всем кто хорошо себя вел в 2020 году, полагается скидка в размере 20% на первое посещение какого-то там солярий до конца 2021 года</p>
         </div>
         <div className="minuteDescriptionWrapper">
           <TextWithLeftIcon src="icons/timer.png" text="Действует до 31.12.2021"/>  
@@ -29,7 +26,7 @@ class Minute extends React.Component {
   }
 }
 
-Minute.propTypes = {
+Present.propTypes = {
 }
 
-export default Minute;
+export default Present;

@@ -115,17 +115,21 @@ p {
   margin-bottom: 6px;
 }
 
-.minute .semiTitle {
-  margin-bottom: 6px;
+.textWrapper {
+  max-width: 900px;
 }
 
-.minute {
+.minute .semiTitle, .present .semiTitle{
+  margin-bottom: 12px;
+}
+
+.minute, .present {
   width: 100%;
   border-bottom: 1px solid #DADADA;
   margin-bottom: 24px;
 }
 
-.minute:last-child {
+.minute:last-child, .present:last-child {
   margin-bottom: 0;
 }
 
