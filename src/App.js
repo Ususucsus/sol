@@ -4,6 +4,7 @@ import NamePanel from './Comps/NamePanel';
 import InfoPanel from './Comps/InfoPanel';
 import MinutesPanel from './Comps/MinutesPanel';
 import PresentsPanel from './Comps/PresentsPanel';
+import FooterPanel from './Comps/FooterPanel';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <InfoPanel />
         <MinutesPanel />
         <PresentsPanel />
+        <FooterPanel />
       </div>
   );
 }
