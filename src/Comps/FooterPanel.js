@@ -18,7 +18,7 @@ class FooterPanel extends React.Component {
         <div className="blockContent">
 
           <div className="blockTitle">
-            <p>Подарочные минуты</p>
+            <p>Контакты</p>
           </div>
 
           <div className="afterTitleWrapperVertical">

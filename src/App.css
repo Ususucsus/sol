@@ -3,6 +3,7 @@ body {
   min-width: 1080px;
   padding-left: 24px;
   padding-right: 24px;
+  overflow-x: hidden;
 }
 
 .content {
@@ -175,6 +176,10 @@ p {
   margin-top: -44px
 }
 
+.footerIcons {
+  margin-top: -42px;
+}
+
 .after {
   width: 100%;
 }
@@ -189,4 +194,58 @@ p {
 
 .footerIcons .icon:first-child {
   margin-left: 0px;
+}
+
+.loginBlock {
+  background-color: white;
+  border: 1px solid #DADADA;
+  border-radius: 6px;
+  margin-bottom: 6px; 
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+}
+
+.loginContent {
+  margin: 24px;
+}
+
+.loginContent input, .loginContent button {
+  font-size: 24px;
+  border: 1px solid #DADADA;
+  border-radius: 4px;
+  height: 48px;
+  margin-top: 6px;
+  padding-left: 6px;
+  width: calc(100% - 6px);
+}
+
+.loginContent button {
+  height: 48px;
+  width: 100%;
+  background-color: #efefef;
+}
+
+.loginContent .inputBlock {
+  margin-bottom: 24px;
+}
+
+.loginContent .errorMessage {
+  padding: 24px;
+  background-color: #ffd2d2;
+  color: #d8000c;
+  border: 1px solid #d8000c;
+  border-radius: 6px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

@@ -6,7 +6,7 @@ class InfoPanel extends React.Component {
     super(props);
 
     this.state = {
-
+      
     };
   }
 
