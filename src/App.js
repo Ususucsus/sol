@@ -11,28 +11,38 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.changePanel = this.changePanel.bind(this);
+    this.changeRecord = this.changeRecord.bind(this);
+
     this.state = {
       currentView: "login",
+
+      record: undefined,
     };
   }
 
   changePanel(panel) {
-    this.setState(() => ({currentView: panel}))
+    this.setState(() => ({currentView: panel}));
+  }
+
+  changeRecord(record) {
+    this.setState(() => ({record: record}));
   }
 
   render() {
+    let record = this.state.record;
     return (
       <div>
         {this.state.currentView === "login" ? 
           <div className="content">
-            <LoginPanel />
+            <LoginPanel changePanel={this.changePanel} changeRecord={this.changeRecord}/>
           </div>
         :
           <div className="content">
-            <NamePanel />
-            <InfoPanel />
-            <MinutesPanel />
-            <PresentsPanel />
+            <NamePanel name={record["Name"]} surname={record["SurName"]} isDisabled={record["IsDisabled"]} cardid={record["CardId"]} mobile={record["Mobile"]} birthday={record["Birthday"]} />
+            <InfoPanel sale={record["Sale"]} saleComment={record["SaleComment"]} money={record["Money"]} totalMinutes={record["TotalMinutes"]}/>
+            <MinutesPanel saleMinutes={record["SaleMinutes"]}/>
+            <PresentsPanel presents={record["Presents"]}/>
             <FooterPanel />
           </div>
         }

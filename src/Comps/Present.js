@@ -12,14 +12,18 @@ class Present extends React.Component {
     };
   }
 
+  formatExpireDate() {
+    return "Действует до " + this.props.expireDate;
+  }
+
   render() {
     return (
       <div className="present">
         <div className="textWrapper">
-          <p className="semiTitle">Всем кто хорошо себя вел в 2020 году, полагается скидка в размере 20% на первое посещение какого-то там солярий до конца 2021 года</p>
+          <p className="semiTitle">{this.props.name}</p>
         </div>
         <div className="minuteDescriptionWrapper">
-          <TextWithLeftIcon src="icons/timer.png" text="Действует до 31.12.2021"/>  
+          <TextWithLeftIcon src="icons/timer.png" text={this.formatExpireDate()}/>  
         </div>
       </div>
     )
@@ -27,6 +31,8 @@ class Present extends React.Component {
 }
 
 Present.propTypes = {
+  name: PropTypes.string.isRequired,
+  expireDate: PropTypes.string.isRequired,
 }
 
 export default Present;

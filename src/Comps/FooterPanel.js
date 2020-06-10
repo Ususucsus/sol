@@ -25,7 +25,7 @@ class FooterPanel extends React.Component {
             <div>
               <p className="semiTitle">Позвонить</p>
               <p className="tire">—</p>
-              <p className="after">+7 999 132-15-56</p>
+              <p className="after">+7 917 802-13-33</p>
             </div>
 
             <div>

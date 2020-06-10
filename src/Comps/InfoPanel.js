@@ -1,5 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import TextWithLeftIcon from './TextWithLeftIcon';
+import { minutesSuffix, minutesSuffixM } from './utils';
+
 
 class InfoPanel extends React.Component {
   constructor(props) {
@@ -8,6 +11,18 @@ class InfoPanel extends React.Component {
     this.state = {
       
     };
+  }
+
+  formatMinutes() {
+    return "Всего в солярии проведено " + this.props.totalMinutes + " минут" + minutesSuffix(this.props.totalMinutes);
+  }
+
+  formatMoney() {
+    return "Накоплено " + this.props.money + " балл" + minutesSuffixM(this.props.money);
+  }
+
+  formatPercent() {
+    return "Скидка — " + this.props.sale + " процент" + minutesSuffixM(this.props.sale);
   }
 
   render() {
@@ -22,15 +37,15 @@ class InfoPanel extends React.Component {
 
           <div className="afterTitleWrapper">
             <div className="sale">
-              <p className="semiTitle">Скидка — 100 процентов</p>
+              <p className="semiTitle">{this.formatPercent()}</p>
               <div className="saleDescriptionWrapper">
-                <TextWithLeftIcon src="icons/alert-circle.png" text="Только на Премиум солярий, потому что мы так хотим."/>
+                <TextWithLeftIcon src="icons/alert-circle.png" text={this.props.saleComment}/>
               </div>
             </div>
             <div className="minutes">
-              <p className="semiTitle">Бесплатных минут — 9999</p>
+              <p className="semiTitle">{this.formatMoney()}</p>
               <div className="minutesDescriptionWrapper">
-                <TextWithLeftIcon src="icons/time.png" text="Всего проведено в солярии 92 минуты"/>
+                <TextWithLeftIcon src="icons/time.png" text={this.formatMinutes()}/>
               </div>
             </div>
 
@@ -41,6 +56,13 @@ class InfoPanel extends React.Component {
       </div>
     )
   }
+}
+
+InfoPanel.propTypes = {
+  sale: PropTypes.number.isRequired,
+  saleComment: PropTypes.string.isRequired,
+  money: PropTypes.number.isRequired,
+  totalMinutes: PropTypes.number.isRequired,
 }
 
 export default InfoPanel;

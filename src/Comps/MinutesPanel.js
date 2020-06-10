@@ -1,5 +1,5 @@
 import React from 'react';
-import TextWithLeftIcon from './TextWithLeftIcon';
+import PropTypes from 'prop-types';
 import Minute from './Minute';
 
 class MinutesPanel extends React.Component {
@@ -12,6 +12,12 @@ class MinutesPanel extends React.Component {
   }
 
   render() {
+    let minutes = [];
+    for (let i = 0; i < this.props.saleMinutes.length; i++) {
+      let sm = this.props.saleMinutes[i];
+      minutes.push(<Minute minutes={sm["Minutes"]} accessibleFor={sm["AccessibleFor"]} expireDate={sm["ExpireDate"]} key={i}/>);
+    }
+
     return (
       <div className="block nameBlock">
 
@@ -22,9 +28,7 @@ class MinutesPanel extends React.Component {
           </div>
 
           <div className="afterTitleWrapperVertical">
-            <Minute minutes={1} accessibleFor={["Премиум"]} expireDate="08.07.2020"/>
-            <Minute minutes={1211} accessibleFor={["Эконом", "Премиум"]} expireDate="31.12.2021"/>
-            <Minute minutes={25} accessibleFor={["Эконом", "Премиум", "Вип"]} expireDate="08.08.2020"/>
+            {minutes}
           </div>
 
         </div>
@@ -32,6 +36,10 @@ class MinutesPanel extends React.Component {
       </div>
     )
   }
+}
+
+MinutesPanel.propTypes = {
+  saleMinutes: PropTypes.arrayOf(PropTypes.object).isRequired,
 }
 
 export default MinutesPanel;

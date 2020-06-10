@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { load } from "./utils";
 
 class LoginPanel extends React.Component {
   constructor(props) {
@@ -7,6 +9,7 @@ class LoginPanel extends React.Component {
     this.handleMobileChange = this.handleMobileChange.bind(this);
     this.handleCardChange = this.handleCardChange.bind(this);
     this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleCardKeyDown = this.handleCardKeyDown.bind(this);
 
     this.state = {
       mobile: "",
@@ -43,10 +46,24 @@ class LoginPanel extends React.Component {
 
     if (errorMessage !== "") {
       error = true;
+      this.setState(() => ({error: error, errorMessage: errorMessage}));
+    } else {
+      load().then(json => {
+        let record = JSON.parse(json);
+        this.props.changeRecord(record);
+        this.props.changePanel("main");
+      }).catch(err => {
+        console.log(err);
+      })
     }
-
-    this.setState(() => ({error: error, errorMessage: errorMessage}));
   }
+
+  handleCardKeyDown(e) {
+    if (e.key === "Enter") {
+      this.handleLoginClick();
+    }
+  }
+
 
   render() {
     return (
@@ -56,12 +73,12 @@ class LoginPanel extends React.Component {
 
           <div className="inputBlock">
             <label htmlFor="name">Номер телефона</label>
-            <input className="mobileInput" name="mobile" type="text" placeholder="+79991321556" onChange={this.handleMobileChange} value={this.state.mobile}></input>
+            <input className="mobileInput" name="mobile" type="text" placeholder="+79991234567" onChange={this.handleMobileChange} value={this.state.mobile}></input>
           </div>
 
           <div className="inputBlock">
             <label htmlFor="card">Номер карты</label>
-            <input className="cardInput" name="card" type="number" placeholder="8000012345" onChange={this.handleCardChange} value={this.state.card}></input>
+            <input className="cardInput" name="card" type="number" placeholder="8000012345" onChange={this.handleCardChange} onKeyDown={this.handleCardKeyDown} value={this.state.card}></input>
           </div>
 
           {this.state.error ?
@@ -79,6 +96,11 @@ class LoginPanel extends React.Component {
       </div>
     )
   }
+}
+
+LoginPanel.propTypes = {
+  changePanel: PropTypes.func.isRequired,
+  changeRecord: PropTypes.func.isRequired,
 }
 
 export default LoginPanel;
