@@ -33,6 +33,14 @@ function formatLess100M(n) {
   if (21 <= n <= 100) return formatLess20M(n % 10);
 }
 
+export function trimMobile(mobile) {
+  let m = mobile.replace(/-/g, '').replace(/\(/g, '').replace(/\)/g, '').replace(/ /g, '');
+  if (m[0] === '8') {
+    m = '+7' + m.slice(1);
+  }
+  return m
+}
+
 export function load(cardid, mobile) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { load } from "./utils";
+import { load, trimMobile } from "./utils";
 import { withCookies, Cookies, lax } from 'react-cookie';
 
 class LoginPanel extends React.Component {
@@ -48,16 +48,15 @@ class LoginPanel extends React.Component {
   }
 
   handleLoginClick() {
-    console.log("login");
-    console.log(this.state.mobile);
-    console.log(this.state.card);
+    const {card} = this.state;
+    const mobile = trimMobile(this.state.mobile);
 
     let error = false;
     let errorMessage = "";
 
-    if (!this.state.mobile || this.state.mobile === "") {
+    if (!mobile || mobile === "") {
       errorMessage = "Укажите номер телефона.";
-    } else if (!this.state.card || this.state.card === "") {
+    } else if (!card || card === "") {
       errorMessage = "Укажите номер карты..";
     }
 
@@ -65,10 +64,10 @@ class LoginPanel extends React.Component {
       error = true;
       this.setState(() => ({error: error, errorMessage: errorMessage}));
     } else {
-      load(this.state.card, this.state.mobile).then(json => {
+      load(card, mobile).then(json => {
         let record = json;
-        this.props.cookies.set("mobile", this.state.mobile, {maxAge: 3600, secure: true});
-        this.props.cookies.set("card", this.state.card, {maxAge: 3600, secure: true});
+        this.props.cookies.set("mobile",mobile, {maxAge: 3600, secure: true});
+        this.props.cookies.set("card", card, {maxAge: 3600, secure: true});
         this.props.changeRecord(record);
         this.props.changePanel("main");
       }).catch(err => {
@@ -85,9 +84,9 @@ class LoginPanel extends React.Component {
     }
   }
 
-
   render() {
     return (
+      <>
       <div className="loginBlock">
 
         <div className="loginContent">
@@ -115,6 +114,17 @@ class LoginPanel extends React.Component {
         </div>
 
       </div>
+
+      <div className="loginBlock">
+
+      <div className="loginContent">
+
+        <p className="cookieInfo">Мы используем cookie, чтобы вам было удобно.</p>
+
+      </div>
+
+      </div>
+      </>
     )
   }
 }
