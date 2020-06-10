@@ -36,8 +36,9 @@ function formatLess100M(n) {
 export function load(cardid, mobile) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
+  myHeaders.append("Accept", "application/json");
   
-  var raw = JSON.stringify({"cardid":cardid,"mobile":mobile});
+  var raw = JSON.stringify({"cardid":cardid, "mobile":mobile});
   
   var requestOptions = {
     method: 'POST',
@@ -45,6 +46,8 @@ export function load(cardid, mobile) {
     body: raw,
     redirect: 'follow'
   };
+
+  console.log(raw);
 
   return new Promise((resolve, reject) => {
     fetch("https://rscradik.asuscomm.com:5001/api/getRecord", requestOptions)
@@ -55,6 +58,7 @@ export function load(cardid, mobile) {
         return result.json();
       })
       .then(json => {
+        console.log(json);
         resolve(json);
       })
       .catch(err => {

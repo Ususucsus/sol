@@ -48,8 +48,8 @@ class LoginPanel extends React.Component {
       error = true;
       this.setState(() => ({error: error, errorMessage: errorMessage}));
     } else {
-      load().then(json => {
-        let record = JSON.parse(json);
+      load(this.state.card, this.state.mobile).then(json => {
+        let record = json;
         this.props.changeRecord(record);
         this.props.changePanel("main");
       }).catch(err => {
