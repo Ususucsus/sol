@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { load } from "./utils";
+import { withCookies, Cookies, lax } from 'react-cookie';
 
 class LoginPanel extends React.Component {
   constructor(props) {
@@ -18,6 +19,22 @@ class LoginPanel extends React.Component {
       error: false,
       errorMessage: "",
     };
+  }
+
+  componentDidMount() {
+    const cookie_mobile = this.props.cookies.get("mobile");
+    const cookie_card = this.props.cookies.get("card");
+
+    if (cookie_card && cookie_mobile) {
+      load(cookie_card, cookie_mobile).then(json => {
+        let record = json;
+        this.props.changeRecord(record);
+        this.props.changePanel("main");
+      }).catch(err => {
+        this.props.cookies.remove("mobile");
+        this.props.cookies.remove("card");
+      })
+    }
   }
 
   handleMobileChange(e) {
@@ -39,9 +56,9 @@ class LoginPanel extends React.Component {
     let errorMessage = "";
 
     if (!this.state.mobile || this.state.mobile === "") {
-      errorMessage = "Укажите номер телефона";
+      errorMessage = "Укажите номер телефона.";
     } else if (!this.state.card || this.state.card === "") {
-      errorMessage = "Укажите номер карты";
+      errorMessage = "Укажите номер карты..";
     }
 
     if (errorMessage !== "") {
@@ -50,10 +67,14 @@ class LoginPanel extends React.Component {
     } else {
       load(this.state.card, this.state.mobile).then(json => {
         let record = json;
+        this.props.cookies.set("mobile", this.state.mobile, {maxAge: 3600, secure: true});
+        this.props.cookies.set("card", this.state.card, {maxAge: 3600, secure: true});
         this.props.changeRecord(record);
         this.props.changePanel("main");
       }).catch(err => {
-        console.log(err);
+        error = true;
+        errorMessage = "Неверный номер телефона или номер карты. Попробуйте ещё раз.";
+        this.setState(() => ({error: error, errorMessage: errorMessage}));
       })
     }
   }
@@ -101,6 +122,8 @@ class LoginPanel extends React.Component {
 LoginPanel.propTypes = {
   changePanel: PropTypes.func.isRequired,
   changeRecord: PropTypes.func.isRequired,
+
+  cookies: PropTypes.instanceOf(Cookies).isRequired,
 }
 
-export default LoginPanel;
+export default withCookies(LoginPanel);
