@@ -39,7 +39,10 @@ class InfoPanel extends React.Component {
             <div className="sale">
               <p className="semiTitle">{this.formatPercent()}</p>
               <div className="saleDescriptionWrapper">
+                { this.props.saleComment !== "" ? 
                 <TextWithLeftIcon src="icons/alert-circle.png" text={this.props.saleComment}/>
+                : null
+                }
               </div>
             </div>
             <div className="minutes">

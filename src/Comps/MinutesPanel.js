@@ -28,7 +28,7 @@ class MinutesPanel extends React.Component {
           </div>
 
           <div className="afterTitleWrapperVertical">
-            {minutes}
+            {minutes.length ? minutes : <p className="notfound">У вас пока что нет подарочных минут :(</p>}
           </div>
 
         </div>

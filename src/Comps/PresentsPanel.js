@@ -28,7 +28,7 @@ class PresentsPanel extends React.Component {
           </div>
 
           <div className="afterTitleWrapperVertical">
-            {presents}
+            {presents.length ? presents : <p className="notfound">У вас пока что нет подарков :(</p>}
           </div>
 
         </div>

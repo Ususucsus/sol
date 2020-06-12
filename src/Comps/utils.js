@@ -41,6 +41,28 @@ export function trimMobile(mobile) {
   return m
 }
 
+export function formatCardId(cardid) {
+  if (cardid.length !== 5) {
+    return cardid;
+  }
+
+  cardid = "8888888" + cardid;
+
+  let even_sum = 0;
+  let odd_sum = 0;
+  for (let i = 0; i < cardid.length; i++) {
+    if (i % 2 == 0) even_sum += cardid[i] - '0';
+    else odd_sum += cardid[i] - '0';
+  }
+
+  let sum = odd_sum * 3 + even_sum;
+  let s = sum % 10;
+  let control = 0;
+  if (s !== 0) control = 10 - s;
+
+  return cardid + control;
+}
+
 export function load(cardid, mobile) {
   var myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
@@ -58,6 +80,7 @@ export function load(cardid, mobile) {
   console.log(raw);
 
   return new Promise((resolve, reject) => {
+    //resolve(JSON.parse('{"Name": "Artur", "SurName": "Usmanov", "Mobile": "", "Birthday": "14.04.2001", "CardId": "8888888123456", "SaleMinutes": [], "Presents": [], "IsDisabled": true, "Sale": 0, "SaleComment": "", "Money": 0, "TotalMinutes": 0 }'));
     fetch("https://rscradik.asuscomm.com:5001/api/getRecord", requestOptions)
       .then(result => {
         if (result.ok === false)

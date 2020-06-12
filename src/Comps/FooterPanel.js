@@ -13,7 +13,7 @@ class FooterPanel extends React.Component {
 
   render() {
     return (
-      <div className="block nameBlock">
+      <div className="block footerBlock">
 
         <div className="blockContent">
 
@@ -25,13 +25,13 @@ class FooterPanel extends React.Component {
             <div>
               <p className="semiTitle">Позвонить</p>
               <p className="tire">—</p>
-              <p className="after">+7 917 802-13-33</p>
+              <p className="after"><a href="tel:+79178021333">+7 917 802-13-33</a></p>
             </div>
 
             <div>
               <p className="semiTitle">Написать</p>
               <p className="tire">—</p>
-              <p className="after">mail@mail.ru</p>
+              <p className="after"><a href="mailto:mail@mail.ru">mail@mail.ru</a></p>
             </div>
 
             <div>
@@ -45,8 +45,9 @@ class FooterPanel extends React.Component {
               </div>
             </div>
 
-            <p className="smol-light">Политика конфиденциальности</p>
-            <p className="smol-light">Обработка персональных данных</p>
+            {0 ? <p className="smol-light">Политика конфиденциальности</p> : null }
+            {0 ? <p className="smol-light">Обработка персональных данных</p> : null}
+            
           </div>
 
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { load, trimMobile } from "./utils";
-import { withCookies, Cookies, lax } from 'react-cookie';
+import { load, trimMobile, formatCardId } from "./utils";
+import { withCookies, Cookies } from 'react-cookie';
 
 class LoginPanel extends React.Component {
   constructor(props) {
@@ -48,7 +48,7 @@ class LoginPanel extends React.Component {
   }
 
   handleLoginClick() {
-    const {card} = this.state;
+    const card = formatCardId(this.state.card);
     const mobile = trimMobile(this.state.mobile);
 
     let error = false;
@@ -72,7 +72,7 @@ class LoginPanel extends React.Component {
         this.props.changePanel("main");
       }).catch(err => {
         error = true;
-        errorMessage = "Неверный номер телефона или номер карты. Попробуйте ещё раз.";
+        errorMessage = "Неверный номер телефона или номер карты. Попробуйте ещё раз или свяжитесь +7 917 802-13-33.";
         this.setState(() => ({error: error, errorMessage: errorMessage}));
       })
     }

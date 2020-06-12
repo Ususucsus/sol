@@ -12,6 +12,8 @@ class NamePanel extends React.Component {
   }
 
   render() {
+    const {mobile, birthday, cardid, name, surname} = this.props;
+
     return (
       <div className="block nameBlock">
 
@@ -19,17 +21,17 @@ class NamePanel extends React.Component {
 
           <div className="nameOverflowContainter">
             <div className="nameContainer">
-              <p className="name">{this.props.name}</p>
-              <p className="surname">{this.props.surname}</p>
+              <p className="name">{name}</p>
+              <p className="surname">{surname}</p>
             </div>
           </div>
 
           <div className="staticInfoContainer">
             <div className="InfoContainer">
               {this.state.disabled ? <StaticInfoPanel className="staticInfoPanel error" text="Карта заблокирована" src="icons/alert-octagon" error={true}/> : <div style={{height: "43px"}}></div>}
-              <StaticInfoPanel className="staticInfoPanel" text={this.props.mobile} src="icons/call-phone" />
-              <StaticInfoPanel className="staticInfoPanel" text={this.props.birthday} src="icons/calendar-dates" />
-              <StaticInfoPanel className="staticInfoPanel" text={this.props.cardid} src="icons/creditcard" />
+              <StaticInfoPanel className="staticInfoPanel" text={mobile !== "" ? mobile : "Не указан"} src="icons/call-phone" />
+              <StaticInfoPanel className="staticInfoPanel" text={birthday} src="icons/calendar-dates" />
+              <StaticInfoPanel className="staticInfoPanel" text={cardid} src="icons/creditcard" />
             </div>
           </div>
 
