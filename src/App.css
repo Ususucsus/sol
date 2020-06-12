@@ -23,6 +23,8 @@ body {
   box-shadow: 1px 1px 1px 0px rgba(218,218,218,1);
 }
 
+
+
 .blockContent {
   width: calc(100% - 24px - 24px);
   margin-left: auto;
@@ -200,6 +202,7 @@ p {
 .loginBlock {
   background-color: white;
   border: 1px solid #DADADA;
+  box-shadow: 1px 1px 1px 0px rgba(218,218,218,1);
   border-radius: 6px;
   margin-bottom: 6px; 
   margin-left: auto;
