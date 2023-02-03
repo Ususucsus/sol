@@ -81,7 +81,7 @@ export function load(cardid, mobile) {
 
   return new Promise((resolve, reject) => {
     //resolve(JSON.parse('{"Name": "Artur", "SurName": "Usmanov", "Mobile": "", "Birthday": "14.04.2001", "CardId": "8888888123456", "SaleMinutes": [], "Presents": [], "IsDisabled": true, "Sale": 0, "SaleComment": "", "Money": 0, "TotalMinutes": 0 }'));
-    fetch("https://rscradik.asuscomm.com:5001/api/getRecord", requestOptions)
+    fetch("https://rscradik.ru:5001/api/getRecord", requestOptions)
       .then(result => {
         if (result.ok === false)
           reject("result is not ok")
